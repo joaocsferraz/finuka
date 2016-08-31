@@ -21,6 +21,7 @@ public class Cacapa extends Objeto {
 
     public void  draw(Canvas canvas, Paint paint){
             paint.setColor(Color.BLACK);
+
             canvas.drawCircle(getX(),getY(),raio,paint);
     }
 

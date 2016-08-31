@@ -12,7 +12,7 @@ public class Bola extends Objeto {
     private int id;
     private float raio;
     private float constElastica;
-    private float peso;
+    private Float peso;
     private int numero;
     private int cor;
     private float centro;
