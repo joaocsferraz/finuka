@@ -4,48 +4,45 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-/**
- * Created by LucasRezende on 27/07/2016.
- */
 public class Bola extends Objeto {
 
-    private int id;
+    private Integer id;
     private float raio;
-    private float constElastica;
+    private float constanteElastica;
     private Float peso;
-    private int numero;
-    private int cor;
+    private Integer numero;
+    private Integer cor;
     private float centro;
 
-    public Bola(float x, float y, int id, float raio) {
-        super(x,y,0,0);
+    public Bola(float x, float y, Integer id, float raio) {
+        super(x, y, 0.0f, 0.0f);
         this.id = id;
         this.raio = raio;
+        this.setAx(0.0f);
+        this.setAy(0.0f);
     }
 
     public Bola() {
+        this(0.0f, 0.0f, 0, 1.0f);
     }
 
-    public  void moviment(double dt){
-        setVx(getVx() + (getX()*getAx()));
-        float xAntigo = getX();
-        setX(getX() + (float) (getVx()*dt));
-        setDeltax(getX()- xAntigo);
+    public  void movimenta(float dt){
+        this.setVx(this.getVx() + this.getAx()*dt);
+        this.setVy(this.getVy() + this.getAy()*dt);
 
-        setVy(getVy()+ getY()*getAy());
-        float yAntigo = getY();
-        setY( getY() + (float) (getVy()*dt));
-        setDeltay(getY() - yAntigo);
+        this.setX(this.getX()+this.getVx()*dt);
+        this.setY(this.getY()+this.getVy()*dt);
+
     }
 
 
     public void  draw(Canvas canvas, Paint paint){
         if(id == 1){
-            paint.setColor(Color.WHITE);
-            canvas.drawCircle(getX(),getY(),raio,paint);
+            paint.setColor(Color.GRAY);
+            canvas.drawCircle(getX()-raio,getY()-raio,2*raio,paint);
         }else {
             paint.setColor(Color.RED);
-            canvas.drawCircle(getX(),getY(),raio,paint);
+            canvas.drawCircle(getX()-raio,getY()-raio,2*raio,paint);
         }
     }
 
@@ -59,34 +56,43 @@ public class Bola extends Objeto {
 
 
 
-    public int colideTable(Mesa mesa){
-        if(mesa.getB_top().getWidth() >= getY()- raio)
+    public Integer checkTableCollide(Mesa mesa){
+        if(mesa.getY() > getY()-raio){
+            this.setVy(-this.getVy());
+            this.setY(mesa.getY()+raio);
             return 1;//colissao com o top;
-        if(mesa.getB_bot().getY() <= getY()+raio)
+        }
+        if(mesa.getWidth() < getY()+raio){
+            this.setVy(-this.getVy());
+            this.setY(mesa.getWidth()-raio);
             return 1;//colissao com o bot;
-        if(mesa.getB_right().getHeight() >= getX()-raio)
+        }
+        if(mesa.getX() > getX()-raio){
+            this.setVx(-this.getVx());
+            this.setX(mesa.getX()+raio);
             return 2;//colissao com right;
-        if(mesa.getB_left().getX() <= getX()+raio)
+        }
+        if(mesa.getHeight() < getX()+raio){
+            this.setVx(-this.getVx());
+            this.setX(mesa.getHeight()-raio);
             return 2;//colissao com o left;
+        }
         else
             return 0;
     }
 
-    public void destroibola(){
-        setX(20);
-        setY(20);
-        setAx(0);
-        setAy(0);
-        setVx(0);
-        setVy(0);
+    public void destroiBola(){
+        setX(20.0f);
+        setY(20.0f);
+        setAx(0.0f);
+        setAy(0.0f);
+        setVx(0.0f);
+        setVy(0.0f);
 
     }
 
     public boolean colideBalls(Bola b){//verifica colisao entre duas bolas
-        if(Math.sqrt(Math.pow(b.getX()-getX(),2)+Math.pow(b.getY()-getY(),2)) <= (b.getRaio()+raio))
-           return true;
-        else
-            return false;
+        return Math.sqrt(Math.pow(b.getX() - getX(), 2) + Math.pow(b.getY() - getY(), 2)) <= (b.getRaio() + raio);
     }
 
     public float getRaio() {
@@ -105,6 +111,19 @@ public class Bola extends Objeto {
             setVy((-getVy()/10));
             setVx((-getVx()/10));
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Bola{" +
+                " raio=" + raio +
+                " ax=" + getAx()+
+                " ay=" + getAy()+
+                " ax=" + getVx()+
+                " vy=" + getVy()+
+                " x=" + getX()+
+                " y=" + getY()+
+                '}';
     }
 }
 /*

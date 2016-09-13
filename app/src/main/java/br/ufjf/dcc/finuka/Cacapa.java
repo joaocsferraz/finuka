@@ -26,10 +26,7 @@ public class Cacapa extends Objeto {
     }
 
     public boolean collidecacapa(Bola b){
-        if(Math.sqrt(Math.pow(b.getX()- getX(),2)+Math.pow(b.getY()- getY(),2)) <= raio)
-            return true;
-        else
-            return false;
+        return Math.sqrt(Math.pow(b.getX() - getX(), 2) + Math.pow(b.getY() - getY(), 2)) <= raio;
 
     }
 

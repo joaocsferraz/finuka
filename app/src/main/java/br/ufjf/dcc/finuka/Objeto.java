@@ -1,39 +1,37 @@
 package br.ufjf.dcc.finuka;
 
-/**
- * Created by LucasRezende on 23/07/2016.
- */
 public class Objeto {
 
     private float x;
     private float y;
-    private float deltax;
-    private float deltay;
+    private float deltaX;
+    private float deltaY;
 
-    public float getDeltax() {
-        return deltax;
+    public float getDeltaX() {
+        return deltaX;
     }
 
-    public void setDeltax(float deltax) {
-        this.deltax = deltax;
+    public void setDeltaX(float deltaX) {
+        this.deltaX = deltaX;
     }
 
-    public float getDeltay() {
-        return deltay;
+    public float getDeltaY() {
+        return deltaY;
     }
 
-    public void setDeltay(float deltay) {
-        this.deltay = deltay;
+    public void setDeltaY(float deltaY) {
+        this.deltaY = deltaY;
     }
 
     private float height;
     private float width;
-    private float vy;
-    private float ay;
-    private float vx;
-    private float ax;
+    private float vy = 0.0f;
+    private float ay = 0.0f;
+    private float vx = 0.0f;
+    private float ax = 0.0f;
 
     public Objeto() {
+        this(0.0f, 0.0f, 5.0f, 5.0f);
     }
 
 
@@ -42,32 +40,35 @@ public class Objeto {
         this.y = y;
         this.height = height;
         this.width = width;
-        this.vy = 0;
-        this.ay = 0;
-        this.vx = 0;
-        this.ax = 0;
 
     }
 
-    public boolean ColideObjects(Objeto p){
+    public boolean isRectCollidedWith(Objeto p){
         //player a direita
-        if(p.getX() > x + width)return false;
+        if(p.getX() > this.x + width)
+            return false;
         //player abaixo
-        if(p.getY() > y + height)return false;
+        if(p.getY() > this.y + this.height)
+            return false;
         //player a esquerda
-        if(p.getX() + width < x)return false;
+        if(p.getX() + p.getWidth() < this.x)
+            return false;
         //player acima
-        if(p.getY() + height < x)return false;
+        if(p.getY() + p.getHeight() < this.y)
+            return false;
         //existe colisao
         return true;
     }
 
-    public boolean ColidePoints(int x2, int y2){
-        if(x2 > x + width)return false;
-        if(y2 > y + height)return false;
-        if(x2 < x)return false;
-        if(y2 < x)return false;
-        //existe colisao
+    public boolean isPointCollided(int x, int y){
+        if(x > this.x + this.width)
+            return false;
+        if(y > this.y + this.height)
+            return false;
+        if(x < this.x)
+            return false;
+        if(y < this.x)
+            return false;
         return true;
     }
 
