@@ -76,6 +76,7 @@ public float escolhendoDp(){
          return 0.5f;
      else if(dm.densityDpi>320 && dm.densityDpi<=480)
          return 0.3f;
+
      else
          return 0.75f;
 }
