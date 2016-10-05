@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.SystemClock;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,6 +35,7 @@ public class GameView extends View implements Runnable {
         paint = new Paint();
         Thread gameloop = new Thread(this);
         gameloop.setPriority(Thread.MIN_PRIORITY);
+
         //if(mesa==null) {
             startGame();
         //}
@@ -65,6 +67,7 @@ public class GameView extends View implements Runnable {
 
     public void  draw(Canvas canvas){
         super.draw(canvas);
+        canvas.scale(0.7f, 0.7f);
         paint.setColor(Color.RED);
         paint.setTextSize(40);
 
@@ -118,13 +121,13 @@ public class GameView extends View implements Runnable {
 
     public void  startGame(){
         //cria um todos os objetos
-        mesa = new Mesa(130,110,1080,615);//900,600
-        branca = new Bola(350.0f,400.0f,1,10);
+        mesa = new Mesa(130,110,900,600);
+        branca = new Bola(350.0f,400.0f,1,16);
         branca.setVx(225.0f);
         branca.setVy(225.0f);
         bolas = new Bola[8];
         for(int i=0;i<8;i++){
-            bolas[i] =  new Bola(400.0f+42*i,450.0f,0,10);
+            bolas[i] =  new Bola(400.0f+42*i,450.0f,0,16);
             bolas[i].setVx(100*(i+1));
             bolas[i].setVy(100*(8-i));
         }
