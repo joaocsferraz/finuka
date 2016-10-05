@@ -39,10 +39,10 @@ public class Bola extends Objeto {
     public void  draw(Canvas canvas, Paint paint){
         if(id == 1){
             paint.setColor(Color.GRAY);
-            canvas.drawCircle(getX()-raio,getY()-raio,2*raio,paint);
+            canvas.drawCircle(getX(),getY(),raio,paint);
         }else {
             paint.setColor(Color.RED);
-            canvas.drawCircle(getX()-raio,getY()-raio,2*raio,paint);
+            canvas.drawCircle(getX(),getY(),raio,paint);
         }
     }
 
@@ -52,9 +52,9 @@ public class Bola extends Objeto {
             this.setY(mesa.getY()+raio);
             //colissao com o top;
         }
-        if(mesa.getWidth() < getY()+raio){
+        if(mesa.getY()+mesa.getHeight() < this.getY()+this.raio){
             this.setVy(-this.getVy());
-            this.setY(mesa.getWidth()-raio);
+            this.setY(mesa.getY()+mesa.getHeight()-raio);
             //colissao com o bot;
         }
         if(mesa.getX() > getX()-raio){
@@ -62,9 +62,9 @@ public class Bola extends Objeto {
             this.setX(mesa.getX()+raio);
             //colissao com right;
         }
-        if(mesa.getHeight() < getX()+raio){
+        if(mesa.getX()+mesa.getWidth() < getX()+raio){
             this.setVx(-this.getVx());
-            this.setX(mesa.getHeight()-raio);
+            this.setX(mesa.getX()+mesa.getWidth()-raio);
             //colissao com o left;
         }
     }

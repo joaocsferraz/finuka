@@ -121,13 +121,13 @@ public class GameView extends View implements Runnable {
 
     public void  startGame(){
         //cria um todos os objetos
-        mesa = new Mesa(130,110,900,600);
+        mesa = new Mesa(130,110,600,900);
         branca = new Bola(350.0f,400.0f,1,16);
         branca.setVx(225.0f);
         branca.setVy(225.0f);
         bolas = new Bola[8];
         for(int i=0;i<8;i++){
-            bolas[i] =  new Bola(400.0f+42*i,450.0f,0,16);
+            bolas[i] =  new Bola(200.0f+42*i,250.0f,0,16);
             bolas[i].setVx(100*(i+1));
             bolas[i].setVy(100*(8-i));
         }
