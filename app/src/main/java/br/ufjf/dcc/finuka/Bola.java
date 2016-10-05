@@ -27,12 +27,26 @@ public class Bola extends Objeto {
     }
 
     public  void movimenta(float dt){
-        this.setVx(this.getVx() + this.getAx()*dt);
-        this.setVy(this.getVy() + this.getAy()*dt);
+            /*this.setVx(this.getVx() + this.getAx()*dt-this.getVx()*dt*0.2f);
+        this.setVy(this.getVy() + this.getAy()*dt-this.getVy()*dt*0.2f);
+        */
+        float atrito = 0.98f;
+        if(this.getVx() >0.0f && this.getVy()>0.0f)
+        {this.setVx(this.getVx() + this.getAx()*dt-atrito*dt);
+            this.setVy(this.getVy() + this.getAy()*dt-atrito*dt);}
+        if(this.getVx() >0.0f && this.getVy()<=0.0f)
+        {this.setVx(this.getVx() + this.getAx()*dt-atrito*dt);
+            this.setVy(0);}
+        if(this.getVx() <=0.0f && this.getVy()>0.0f)
+        {this.setVx(0.0f);
+            this.setVy(this.getVy() + this.getAy()*dt-atrito*dt);}
+        if(this.getVx() <=0.0f && this.getVy()<=0.0f)
+        {this.setVx(0.0f);
+            this.setVy(0.0f);}
+
 
         this.setX(this.getX()+this.getVx()*dt);
         this.setY(this.getY()+this.getVy()*dt);
-
     }
 
 
