@@ -29,11 +29,11 @@ public class Mesa extends Objeto {
     private void criaCacapa() {
         cacapas = new Cacapa[6];
         cacapas[0] = new Cacapa(getX(),getY(),32);
-        cacapas[1] = new Cacapa(getHeight(),getY(),32);
-        cacapas[2] = new Cacapa(getX(),getWidth(),32);
-        cacapas[3] = new Cacapa(getHeight(),getWidth(),32);
-        cacapas[4] = new Cacapa(((getHeight()-getX())/2)+getX(),getY()-15,32);
-        cacapas[5] = new Cacapa(((getHeight()-getX())/2)+getX(),getWidth()+15,32);
+        cacapas[1] = new Cacapa(getX()+getWidth(),getY(),32);
+        cacapas[2] = new Cacapa(getX(),getY()+getHeight(),32);
+        cacapas[3] = new Cacapa(getX()+getWidth(),getY()+getHeight(),32);
+        cacapas[4] = new Cacapa(((getWidth())/2)+getX(),getY()-15,32);
+        cacapas[5] = new Cacapa(((getWidth())/2)+getX(),getY()+getHeight()+15,32);
     }
 
     public void detectaponto(Bola b){
@@ -57,7 +57,6 @@ public class Mesa extends Objeto {
         //mesa
         paint.setColor(Color.GREEN);
         canvas.drawRect(this.getX(),this.getY(),this.getHeight(),this.getWidth(),paint);
-
         for(int i = 0; i < cacapas.length; i++){
            cacapas[i].draw(canvas,paint);
         }

@@ -2,6 +2,7 @@ package br.ufjf.dcc.finuka.views;
 
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -24,7 +25,7 @@ public class GameView extends View implements Runnable {
     private long timeAnterior = Long.MAX_VALUE;
     private float dt;
     private float fps = 0;
-
+    private DisplayMetrics dm = new DisplayMetrics();
     private Taco taco;
     private Bola branca;
     private Bola[] bolas;
@@ -33,6 +34,7 @@ public class GameView extends View implements Runnable {
     public GameView(Context context) {
         super(context);
         paint = new Paint();
+        dm = Resources.getSystem().getDisplayMetrics();
         Thread gameloop = new Thread(this);
         gameloop.setPriority(Thread.MIN_PRIORITY);
 
@@ -63,11 +65,26 @@ public class GameView extends View implements Runnable {
         postInvalidate();    //dispara metodo draw
     }
 
+public float escolhendoDp(){
+     if (dm.densityDpi<= 120)
+         return 1.25f;
+     else if(dm.densityDpi>120 && dm.densityDpi<=160)
+         return 1.0f;
+     else if(dm.densityDpi>160 && dm.densityDpi<=240)
+         return 0.65f;
+     else if(dm.densityDpi>240 && dm.densityDpi<=320)
+         return 0.5f;
+     else if(dm.densityDpi>320 && dm.densityDpi<=480)
+         return 0.3f;
 
+     else
+         return 0.75f;
+}
 
     public void  draw(Canvas canvas){
         super.draw(canvas);
-        canvas.scale(0.7f, 0.7f);
+        float escalaDp = escolhendoDp();
+        canvas.scale(escalaDp,escalaDp);
         paint.setColor(Color.RED);
         paint.setTextSize(40);
 
@@ -127,7 +144,7 @@ public class GameView extends View implements Runnable {
         branca.setVy(225.0f);
         bolas = new Bola[8];
         for(int i=0;i<8;i++){
-            bolas[i] =  new Bola(400.0f+42*i,450.0f,0,16);
+            bolas[i] =  new Bola(200.0f+42*i,250.0f,0,16);
             bolas[i].setVx(100*(i+1));
             bolas[i].setVy(100*(8-i));
         }
