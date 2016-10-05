@@ -27,72 +27,65 @@ public class Bola extends Objeto {
     }
 
     public  void movimenta(float dt){
-        this.setVx(this.getVx() + this.getAx()*dt);
-        this.setVy(this.getVy() + this.getAy()*dt);
+            /*this.setVx(this.getVx() + this.getAx()*dt-this.getVx()*dt*0.2f);
+        this.setVy(this.getVy() + this.getAy()*dt-this.getVy()*dt*0.2f);
+        */
+        float atrito = 0.98f;
+        if(this.getVx() >0.0f && this.getVy()>0.0f)
+        {this.setVx(this.getVx() + this.getAx()*dt-atrito*dt);
+            this.setVy(this.getVy() + this.getAy()*dt-atrito*dt);}
+        if(this.getVx() >0.0f && this.getVy()<=0.0f)
+        {this.setVx(this.getVx() + this.getAx()*dt-atrito*dt);
+            this.setVy(0);}
+        if(this.getVx() <=0.0f && this.getVy()>0.0f)
+        {this.setVx(0.0f);
+            this.setVy(this.getVy() + this.getAy()*dt-atrito*dt);}
+        if(this.getVx() <=0.0f && this.getVy()<=0.0f)
+        {this.setVx(0.0f);
+            this.setVy(0.0f);}
+
 
         this.setX(this.getX()+this.getVx()*dt);
         this.setY(this.getY()+this.getVy()*dt);
-
     }
 
 
     public void  draw(Canvas canvas, Paint paint){
         if(id == 1){
             paint.setColor(Color.GRAY);
-            canvas.drawCircle(getX()-raio,getY()-raio,2*raio,paint);
+            canvas.drawCircle(getX(),getY(),raio,paint);
         }else {
             paint.setColor(Color.RED);
-            canvas.drawCircle(getX()-raio,getY()-raio,2*raio,paint);
+            canvas.drawCircle(getX(),getY(),raio,paint);
         }
     }
 
-    public  void direcaoMesa(int i){
-        if(i==1)
-            setVy(getVy()*(-1));
-        if(i==2)
-            setVx(getVx()*(-1));
-    }
-
-
-
-
-    public Integer checkTableCollide(Mesa mesa){
+    public void checkTableCollide(Mesa mesa){
         if(mesa.getY() > getY()-raio){
             this.setVy(-this.getVy());
             this.setY(mesa.getY()+raio);
-            return 1;//colissao com o top;
+            //colissao com o top;
         }
-        if(mesa.getWidth() < getY()+raio){
+        if(mesa.getY()+mesa.getHeight() < this.getY()+this.raio){
             this.setVy(-this.getVy());
-            this.setY(mesa.getWidth()-raio);
-            return 1;//colissao com o bot;
+            this.setY(mesa.getY()+mesa.getHeight()-raio);
+            //colissao com o bot;
         }
         if(mesa.getX() > getX()-raio){
             this.setVx(-this.getVx());
             this.setX(mesa.getX()+raio);
-            return 2;//colissao com right;
+            //colissao com right;
         }
-        if(mesa.getHeight() < getX()+raio){
+        if(mesa.getX()+mesa.getWidth() < getX()+raio){
             this.setVx(-this.getVx());
-            this.setX(mesa.getHeight()-raio);
-            return 2;//colissao com o left;
+            this.setX(mesa.getX()+mesa.getWidth()-raio);
+            //colissao com o left;
         }
-        else
-            return 0;
     }
 
-    public void destroiBola(){
-        setX(20.0f);
-        setY(20.0f);
-        setAx(0.0f);
-        setAy(0.0f);
-        setVx(0.0f);
-        setVy(0.0f);
-
-    }
 
     public boolean colideBalls(Bola b){//verifica colisao entre duas bolas
-        return Math.sqrt(Math.pow(b.getX() - getX(), 2) + Math.pow(b.getY() - getY(), 2)) <= (b.getRaio() + raio);
+        return Math.sqrt(Math.pow(b.getX() - this.getX(), 2) + Math.pow(b.getY() - this.getY(), 2)) <= (b.getRaio() + this.raio);
     }
 
     public float getRaio() {

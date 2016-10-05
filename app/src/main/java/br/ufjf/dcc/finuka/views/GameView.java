@@ -91,6 +91,14 @@ public float escolhendoDp(){
         for (int i=0; i<bolas.length; i++){
             bolas[i].movimenta(dt);
             bolas[i].checkTableCollide(mesa);
+            //mesa.detectaponto(bolas[i]);
+            for(int j = i;j<bolas.length;j++)
+            {
+               if( bolas[i].colideBalls(bolas[j]))
+               {
+
+               }
+            }
         }
         branca.movimenta(dt);
         branca.checkTableCollide(mesa);
@@ -136,7 +144,7 @@ public float escolhendoDp(){
         branca.setVy(225.0f);
         bolas = new Bola[8];
         for(int i=0;i<8;i++){
-            bolas[i] =  new Bola(400.0f+42*i,450.0f,0,16);
+            bolas[i] =  new Bola(200.0f+42*i,250.0f,0,16);
             bolas[i].setVx(100*(i+1));
             bolas[i].setVy(100*(8-i));
         }
