@@ -71,6 +71,14 @@ public class GameView extends View implements Runnable {
         for (int i=0; i<bolas.length; i++){
             bolas[i].movimenta(dt);
             bolas[i].checkTableCollide(mesa);
+            //mesa.detectaponto(bolas[i]);
+            for(int j = i;j<bolas.length;j++)
+            {
+               if( bolas[i].colideBalls(bolas[j]))
+               {
+
+               }
+            }
         }
         branca.movimenta(dt);
         branca.checkTableCollide(mesa);
@@ -110,7 +118,7 @@ public class GameView extends View implements Runnable {
 
     public void  startGame(){
         //cria um todos os objetos
-        mesa = new Mesa(130,110,900,600);
+        mesa = new Mesa(130,110,1080,615);//900,600
         branca = new Bola(350.0f,400.0f,1,10);
         branca.setVx(225.0f);
         branca.setVy(225.0f);

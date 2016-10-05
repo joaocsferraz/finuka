@@ -46,53 +46,32 @@ public class Bola extends Objeto {
         }
     }
 
-    public  void direcaoMesa(int i){
-        if(i==1)
-            setVy(getVy()*(-1));
-        if(i==2)
-            setVx(getVx()*(-1));
-    }
-
-
-
-
-    public Integer checkTableCollide(Mesa mesa){
+    public void checkTableCollide(Mesa mesa){
         if(mesa.getY() > getY()-raio){
             this.setVy(-this.getVy());
             this.setY(mesa.getY()+raio);
-            return 1;//colissao com o top;
+            //colissao com o top;
         }
         if(mesa.getWidth() < getY()+raio){
             this.setVy(-this.getVy());
             this.setY(mesa.getWidth()-raio);
-            return 1;//colissao com o bot;
+            //colissao com o bot;
         }
         if(mesa.getX() > getX()-raio){
             this.setVx(-this.getVx());
             this.setX(mesa.getX()+raio);
-            return 2;//colissao com right;
+            //colissao com right;
         }
         if(mesa.getHeight() < getX()+raio){
             this.setVx(-this.getVx());
             this.setX(mesa.getHeight()-raio);
-            return 2;//colissao com o left;
+            //colissao com o left;
         }
-        else
-            return 0;
     }
 
-    public void destroiBola(){
-        setX(20.0f);
-        setY(20.0f);
-        setAx(0.0f);
-        setAy(0.0f);
-        setVx(0.0f);
-        setVy(0.0f);
-
-    }
 
     public boolean colideBalls(Bola b){//verifica colisao entre duas bolas
-        return Math.sqrt(Math.pow(b.getX() - getX(), 2) + Math.pow(b.getY() - getY(), 2)) <= (b.getRaio() + raio);
+        return Math.sqrt(Math.pow(b.getX() - this.getX(), 2) + Math.pow(b.getY() - this.getY(), 2)) <= (b.getRaio() + this.raio);
     }
 
     public float getRaio() {
