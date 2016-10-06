@@ -66,19 +66,20 @@ public class GameView extends View implements Runnable {
     }
 
 public float escolhendoDp(){
+    float dpii= 4;
      if (dm.densityDpi<= 120)
-         return 1.25f;
+         return dpii*1.25f;
      else if(dm.densityDpi>120 && dm.densityDpi<=160)
-         return 1.0f;
+         return dpii*1.0f;
      else if(dm.densityDpi>160 && dm.densityDpi<=240)
-         return 0.65f;
+         return dpii*0.65f;
      else if(dm.densityDpi>240 && dm.densityDpi<=320)
-         return 0.5f;
+         return dpii*0.5f;
      else if(dm.densityDpi>320 && dm.densityDpi<=480)
-         return 0.3f;
+         return dpii*0.3f;
 
      else
-         return 0.75f;
+         return dpii*0.75f;
 }
 
     public void  draw(Canvas canvas){
@@ -138,7 +139,7 @@ public float escolhendoDp(){
 
     public void  startGame(){
         //cria um todos os objetos
-        mesa = new Mesa(130,110,900,600);
+        mesa = new Mesa(130,110,600,900);
         branca = new Bola(350.0f,400.0f,1,16);
         branca.setVx(225.0f);
         branca.setVy(225.0f);

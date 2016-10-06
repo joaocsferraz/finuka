@@ -56,7 +56,7 @@ public class Mesa extends Objeto {
         //canvas.drawRoundRect(rect,25,25,paint );
         //mesa
         paint.setColor(Color.GREEN);
-        canvas.drawRect(this.getX(),this.getY(),this.getHeight(),this.getWidth(),paint);
+        canvas.drawRect(this.getX(),this.getY(),this.getX()+this.getWidth(),this.getY()+this.getHeight(),paint);
         for(int i = 0; i < cacapas.length; i++){
            cacapas[i].draw(canvas,paint);
         }
