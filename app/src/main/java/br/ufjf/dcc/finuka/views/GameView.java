@@ -1,14 +1,17 @@
 package br.ufjf.dcc.finuka.views;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -64,27 +67,43 @@ public class GameView extends View implements Runnable {
         fps = 1/dt ;   //hud de fps//
         postInvalidate();    //dispara metodo draw
     }
-
-public float escolhendoDp(){
-    float dpii= 4;
-     if (dm.densityDpi<= 120)
-         return dpii*1.25f;
-     else if(dm.densityDpi>120 && dm.densityDpi<=160)
-         return dpii*1.0f;
-     else if(dm.densityDpi>160 && dm.densityDpi<=240)
-         return dpii*0.65f;
-     else if(dm.densityDpi>240 && dm.densityDpi<=320)
-         return dpii*0.5f;
-     else if(dm.densityDpi>320 && dm.densityDpi<=480)
-         return dpii*0.3f;
-
-     else
-         return dpii*0.75f;
+public float getEscala(){
+	//Pega a polegada do aparelho e seleciona uma escala do canvas para desenhar.
+int largura = dm.widthPixels;
+int altura = dm.heightPixels;
+float larg = (float) largura/(float)dm.xdpi;
+float alt = (float) altura/(float)dm.ydpi;
+float x = (float) Math.pow(larg,2);
+float y = (float) Math.pow(alt,2);
+float polegadas = (float) Math.sqrt(x+y);
+	if (polegadas<=3.0f)
+         return 0.3f;
+     else if(polegadas>3.0f && polegadas<=3.3f)
+         return 0.28f;
+     else if(polegadas>3.3f && polegadas<=3.6f)
+         return 0.38f;
+     else if(polegadas>3.6f && polegadas<=3.9f)
+         return 0.42f;
+     else if(polegadas>3.9f && polegadas<=4.2f)
+         return 0.47f;
+	 else if(polegadas>4.2f && polegadas<=4.5f)
+         return 0.62f;
+     else if(polegadas>4.5f && polegadas<=4.8f)
+         return 0.65f;
+	 else if(polegadas>4.8f && polegadas<=5.1f)
+         return 0.68f;
+	 else if(polegadas>5.1f && polegadas<=5.4f)
+         return 0.71f;
+	 else if(polegadas>5.7f && polegadas<=6.0f)
+         return 0.74f;
+	 
+	 else
+         return 0.90f;
 }
-
+	
     public void  draw(Canvas canvas){
         super.draw(canvas);
-        float escalaDp = escolhendoDp();
+        float escalaDp = getEscala();
         canvas.scale(escalaDp,escalaDp);
         paint.setColor(Color.RED);
         paint.setTextSize(40);
@@ -139,7 +158,17 @@ public float escolhendoDp(){
 
     public void  startGame(){
         //cria um todos os objetos
-        mesa = new Mesa(130,110,600,900);
+
+        //Tentativa de pegar o x e y do aparelho, ainda não consegui implementar com sucesso (por isso está comentado - d'oh)
+        /*Display mdisp = ((Activity) getContext()).getWindowManager().getDefaultDisplay();
+        Point mdispSize = new Point();
+        mdisp.getSize(mdispSize);
+        int maxX= mdispSize.x;
+        int maxY= mdispSize.y;*/
+
+        //Alterei o x e y para que a mesa fique mais centralizada, ainda é preciso achar uma maneira de deixar esse x e y
+        //relativo a cada aparelho
+        mesa = new Mesa(220,75,600,900);
         branca = new Bola(350.0f,400.0f,1,16);
         branca.setVx(225.0f);
         branca.setVy(225.0f);

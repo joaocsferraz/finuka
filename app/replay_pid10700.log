@@ -1,0 +1,47 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 557 ciObject found
+ciMethod java/lang/Object <init> ()V 4097 1 1067334 0 0
+ciMethod java/lang/Object getClass ()Ljava/lang/Class; 2049 1 256 0 -1
+ciMethod java/lang/Comparable compareTo (Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/lang/String equals (Ljava/lang/Object;)Z 2049 11465 1706 0 -1
+ciMethod java/lang/String compareTo (Ljava/lang/String;)I 849 24873 2302 0 -1
+ciMethod java/lang/Class getName ()Ljava/lang/String; 225 1 48 0 -1
+ciMethod java/lang/System arraycopy (Ljava/lang/Object;ILjava/lang/Object;II)V 5121 1 640 0 -1
+ciMethod java/lang/RuntimeException <init> (Ljava/lang/String;)V 0 0 1 0 -1
+ciMethod java/lang/StringBuilder <init> ()V 609 1 11320 0 -1
+ciMethod java/lang/StringBuilder append (Ljava/lang/Object;)Ljava/lang/StringBuilder; 105 1 13 0 -1
+ciMethod java/lang/StringBuilder append (Ljava/lang/String;)Ljava/lang/StringBuilder; 953 1 24145 0 -1
+ciMethod java/lang/StringBuilder toString ()Ljava/lang/String; 609 1 11656 0 -1
+ciMethod java/lang/NullPointerException <init> (Ljava/lang/String;)V 0 0 1 0 -1
+ciMethod java/util/AbstractList <init> ()V 401 1 139164 0 0
+ciMethod java/util/AbstractCollection <init> ()V 281 1 181657 0 0
+ciMethod java/util/Iterator hasNext ()Z 0 0 1 0 -1
+ciMethod java/util/Iterator next ()Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/ArrayList <init> (I)V 4097 1 19337 0 288
+ciMethod java/util/ArrayList <init> ()V 129 1 103054 0 -1
+ciMethod java/util/ArrayList ensureCapacityInternal (I)V 641 1 251313 0 -1
+ciMethod java/util/ArrayList size ()I 1089 1 136 0 0
+ciMethod java/util/ArrayList toArray ([Ljava/lang/Object;)[Ljava/lang/Object; 97 1 1593 0 0
+ciMethod java/util/ArrayList elementData (I)Ljava/lang/Object; 1977 1 1006774 0 0
+ciMethod java/util/ArrayList get (I)Ljava/lang/Object; 1977 1 989920 0 128
+ciMethod java/util/ArrayList set (ILjava/lang/Object;)Ljava/lang/Object; 30401 1 13231 0 224
+ciMethod java/util/ArrayList add (Ljava/lang/Object;)Z 641 1 247472 0 768
+ciMethod java/util/ArrayList add (ILjava/lang/Object;)V 3513 1 3898 0 0
+ciMethod java/util/ArrayList clear ()V 3809 8193 8426 0 -1
+ciMethod java/util/ArrayList rangeCheck (I)V 1977 1 1005999 0 0
+ciMethod java/util/ArrayList rangeCheckForAdd (I)V 4097 1 3898 0 -1
+ciMethod java/util/ArrayList iterator ()Ljava/util/Iterator; 2049 1 166477 0 192
+ciMethod java/util/ArrayList access$100 (Ljava/util/ArrayList;)I 1129 1 141 0 0
+ciMethod java/util/HashMap get (Ljava/lang/Object;)Ljava/lang/Object; 2049 1 76495 0 -1
+ciMethod java/util/HashMap put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 506929 1 74014 0 -1
+ciMethod java/util/Arrays sort ([Ljava/lang/Object;)V 2561 1 1607 0 0
+ciMethod java/util/Arrays legacyMergeSort ([Ljava/lang/Object;)V 0 0 1 0 -1
+ciMethod java/util/Arrays equals ([Ljava/lang/Object;[Ljava/lang/Object;)Z 7257 3689 6182 0 -1
+ciMethod java/util/Arrays fill ([II)V 217 11857 1285 0 0
+ciMethod java/util/Arrays copyOf ([Ljava/lang/Object;ILjava/lang/Class;)[Ljava/lang/Object; 4097 1 5632 0 -1
+ciMethodData java/lang/Object <init> ()V 2 1067334 orig 264 168 161 109 94 0 0 0 0 128 4 230 20 0 0 0 0 32 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 49 58 130 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 1 0 0 0 0 0 0 0 255 255 255 255 0 0 0 0 0 0 0 0 data 0 oops 0
+ciMethod java/lang/IllegalArgumentException <init> (Ljava/lang/String;)V 0 0 1 0 -1
+ciMethod java/lang/AssertionError <init> ()V 0 0 1 0 -1
+ciMethodData java/util/ArrayList add (Ljava/lang/Object;)Z 2 247472 orig 264 168 161 109 94 0 0 0 0 136 79 245 20 0 0 0 0 144 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 80 0 0 0 1 51 30 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 15 0 2 0 0 0 64 0 0 0 255 255 255 255 2 0 7 0 0 0 0 0 data 8 0x70002 0x3c68c 0x1a0104 0x0 0x18b468f0 0x14f 0x18b469a0 0xd oops 2
