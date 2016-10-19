@@ -14,8 +14,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         game = new GameView(this);
         game.setBackgroundColor(getResources().getColor(android.R.color.white));
         setContentView(game);

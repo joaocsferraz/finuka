@@ -33,6 +33,8 @@ public class GameView extends View implements Runnable {
     private Bola branca;
     private Bola[] bolas;
     private Mesa mesa;
+    private int espaco;
+    private float escalaDp;
 
     public GameView(Context context) {
         super(context);
@@ -70,22 +72,21 @@ public class GameView extends View implements Runnable {
 
     public float getEscala() {
         //Pega a polegada do aparelho e seleciona uma escala do canvas para desenhar.
+
         int largura = dm.widthPixels;
-        int altura = dm.heightPixels;
-        float larg = (float) largura / dm.xdpi;
-        float alt = (float) altura / dm.ydpi;
-        float x = (float) Math.pow(larg, 2);
-        float y = (float) Math.pow(alt, 2);
-        float polegadas = (float) Math.sqrt(x + y);
+        int alturaDispositivo = (int) (4*dm.heightPixels/5);
+        this.espaco = (dm.heightPixels/5);
 
-        return (0.13f + polegadas / 10);
-
+        int alturaMesa = 620;
+        float relacao = alturaDispositivo/((float)alturaMesa);
+        return relacao;
     }
 
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        float escalaDp = getEscala();
-        canvas.scale(escalaDp, escalaDp);
+        canvas.scale(this.escalaDp, this.escalaDp);
+        //mesa.setX(this.espaco/2);
+        mesa.setY(this.espaco/4);
         paint.setColor(Color.RED);
         paint.setTextSize(40);
 
@@ -146,7 +147,8 @@ public class GameView extends View implements Runnable {
 
         //Alterei o x e y para que a mesa fique mais centralizada, ainda é preciso achar uma maneira de deixar esse x e y
         //relativo a cada aparelho
-        mesa = new Mesa(220, 75, 600, 900);
+        this.escalaDp = getEscala();
+        mesa = new Mesa(0, 0, 620, 1240);
         branca = new Bola(350.0f, 400.0f, 1, 16);
         branca.setVx(225.0f);
         branca.setVy(225.0f);

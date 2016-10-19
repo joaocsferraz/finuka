@@ -24,7 +24,17 @@ public class Mesa extends Objeto {
     }
 
 
+    @Override
+    public void setY(float y) {
+        super.setY(y);
+        cacapas[0].setY(getY());
+        cacapas[1].setY(getY());
+        cacapas[2].setY(getY()+getHeight());
+        cacapas[3].setY(getY()+getHeight());
+        cacapas[4].setY(getY()-15);
+        cacapas[5].setY(getY()+getHeight()+15);
 
+    }
 
     private void criaCacapa() {
         cacapas = new Cacapa[6];
